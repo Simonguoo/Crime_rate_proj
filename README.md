@@ -21,3 +21,10 @@ ok new idea:
 
 - csv files collected from 2019 us census
 - excel files collected from fbi CIUS datatables
+
+- for the csv files, you can refactor the shifting of the columns into:
+  - for estimates(skip 2)
+  - for percents(skip 3)
+  - for city labels but would skip 2 for no percent and 3 for percent
+
+- simplifying the city names would require the csv files to have the same cities, so to check this you could check for the same length after shifting
