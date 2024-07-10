@@ -3,7 +3,7 @@
 - Created a model that predicts the crime rate in American cities 
 based on socioeconomic factors 
 - Utilized a Linear and Random Forest regression model, yielding 
-a mae of 0.0107 and 0.0089 respectively
+a mae of 1.07% and 0.89% respectively
 - Created Features from the given data to evaluate per capita data
 ## Data
 - csv files collected from 2019 us census
