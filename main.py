@@ -14,7 +14,7 @@ df = pd.read_csv("final_df.csv")
 
 # choose relevant columns
 Y = df.Crime_Rate
-X = df.drop(["Crime_Rate", "City", "Violent_Crime_Rate", "Property_Crime_Rate"], axis=1)
+X = df.drop(["Crime_Rate", "City"], axis=1)
 # train test split
 
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=10)
@@ -43,7 +43,7 @@ parameters = {'n_estimators': range(10, 100, 10), "criterion": ("friedman_mse", 
 gs = GridSearchCV(rf, parameters, scoring='neg_mean_absolute_error', cv=3)
 gs.fit(X_train, Y_train)
 
-# test ensembles
+# model metrics
 pred_lm = lm.predict(X_test)
 pred_rf = gs.best_estimator_.predict(X_test)
 
