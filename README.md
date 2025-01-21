@@ -1,13 +1,9 @@
 # Crime Rate Prediction
 
-- Created a model that predicts the crime rate in American cities 
-based on socioeconomic factors 
-- Utilized a Linear and Random Forest regression model, yielding 
-a mae of 1.07% and 0.89% respectively
-- Created Features from the given data to evaluate per capita data
 ## Data
 - csv files collected from 2019 us census
 - excel files collected from fbi CIUS datatables
+- 11 total data tables merged into one
 ### Cleaning
 
 - Cleaned up Excel format (removed headers, footers, and notes)
@@ -17,19 +13,18 @@ a mae of 1.07% and 0.89% respectively
 - Created per capita data columns
 - Merged separate data frames based on city 
 ## EDA
-
-- Looked at distribution of the data and removed egregious outliers
-- Crafted a Pairplot for the factors traditionally 
-believed to be associated with crime rate
-- Created a Heatmap to outline any variables with high correlation
-- dropped unnecessary variables
+- A histogram revealed extreme outliers in several variables, to the extent where z-score thresholds were skewed
+so i opted for IQR to eliminate outliers
+- This removed quite a substantial portion of the data set 
+- By graphing a pairplot of the predictor variables to the target variables I noticed that each predictor
+had a poor relationship with the target variable regardless, so I considered the removal of the outliers to be
+irrelevant to the poor performance of the model
+- Population was the most correlated variable with respect to Crime rate, followed by poverty, law enforcement, home
+vacancy, and median earnings. All these variables were still poor predictors of Crime rate
 
 ## Model Building
-- I tried two models which I believed would be effective
-  - Multiple Linear Regression was the baseline model 
-  - Random Forest was chosen because I was unfamiliar with using the model in practice
-  and wanted to compare the results
-- The random forest model performed better than the mlr model in both mae score and 
-r2 score, although both models performed relatively poorly in r2 score
-  - Multiple Linear Regression: r2 of -0.13786
-  - Random Forest Regression: r2 of 0.29087
+- As a result of the poor relationship between each predictor variable and the target variable, I deemed linear regression
+to be a poor fit and tried random forest and gradient boosting in an attempt to build a model with any statistical signifcance
+- the results were poor, random forest after hyperparameter tuning yielded an r2 score of 29.87%, and an rmse of 1029.78
+- the gradient boosted model performed similarly although with slightly different hyperparameters
+- regardless, the models performed poorly and I may revisit this project again and use the data for something else
